@@ -1,0 +1,26 @@
+.chatwindow{
+    
+    display:flex;
+    flex-direction:column;
+    
+    height:100vh;
+    background-color:#212121 ;
+    width:100vw;
+}
+.chatinput{
+    width:100%;
+    margin-top: auto;
+    padding-bottom:20px;
+    
+    
+}
+@media (min-width:768px){
+
+    .chatinput{
+        width:70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+

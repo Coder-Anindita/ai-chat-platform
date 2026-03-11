@@ -1,0 +1,49 @@
+.outer{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+    border-bottom: 1px solid #414149 ;
+    padding-bottom: 6px;
+    
+
+    
+}
+.ConvoLogo{
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: 8px;
+    margin-top: 5px;
+    padding-top: 8px;
+    padding-bottom: 3px;
+    color: white;
+    font-size: 18px;
+}
+.ConvoLogo:hover{
+    background-color:#414149 ;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.LogoDrop{
+    margin-left: 5px;
+    align-self: center;
+    text-align: center;
+}
+
+.UserInfo{
+    color: white;
+    margin-right: 20px;
+    margin-top: 3px;
+    font-size: 20px;
+    width:50px;
+    height:50px;
+    text-align: center;
+    padding-top:5px;
+
+}
+.UserInfo:hover{
+    background-color:#414149 ;
+    border-radius: 12px;
+    cursor: pointer;
+}
