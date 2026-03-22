@@ -63,7 +63,7 @@ The project is built with a modern tech stack and focuses on scalability, clean 
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone [https://github.com/your-username/convogpt.git](https://github.com/Coder-Anindita/ai-chat-platform.git)
+git clone https://github.com/Coder-Anindita/ai-chat-platform.git
 cd convogpt
 ```
 
