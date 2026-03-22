@@ -1,11 +1,38 @@
-import { useState } from "react"
+import { useState ,useEffect, useContext} from "react"
 import Navbar from "./Navbar.jsx"
 import ChatInput from "./ChatInput.jsx"
 import "./ChatWindow.css"
 import {PulseLoader} from "react-spinners"
+import { Context } from "../../Context.jsx"
+import Chat from "./Chat.jsx"
 
 function ChatWindow() {
-  let [loading,setLoading]=useState(false);
+  const {loading,setLoading,prompt,setPrompt,reply,SetReply,prevChats,setPrevChats}=useContext(Context);
+  
+  
+  
+  
+  
+  
+  
+
+
+  useEffect(()=>{
+    if(prompt && reply){
+      setPrevChats(prevChats=>
+        [...prevChats,{
+          role:"user",
+          content:prompt
+        },
+      {
+        role:"assistant",
+        content:reply
+      }]
+      )
+    }
+    setPrompt("")
+
+  },[reply])
   return (
     <div className='chatwindow'>
 
@@ -14,10 +41,11 @@ function ChatWindow() {
         </div>
 
         <div className='chats'>
+          <Chat></Chat>
           
         </div>
         
-          <div className="Loader" loading={loading}>
+          <div className="Loader">
               <PulseLoader color='#fff' loading={loading}/>
             </div>
        
@@ -25,7 +53,7 @@ function ChatWindow() {
         
         
         <div className='chatinput'>
-          <ChatInput loading={loading} setLoading={setLoading}></ChatInput>
+          <ChatInput></ChatInput>
         </div>
 
     </div>

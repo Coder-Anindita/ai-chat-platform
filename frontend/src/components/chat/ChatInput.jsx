@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./ChatInput.css"
 import { IoSend } from "react-icons/io5";
-import {v1 as uuidv1} from "uuid"
+import { Context } from "../../Context";
 
-function ChatInput({loading,setLoading}) {
-    let [prompt,setPrompt]=useState("");
-    let [reply,setReply]=useState(null);
-    let [currThreadId,setCurrThreadId]=useState(uuidv1())
+function ChatInput() {
+    
+    const {prompt,setPrompt,reply,setReply,currThreadId,setCurrThreadId,loading,setLoading,setNewChat}=useContext(Context)
     const getReply=async()=>{
-
+        if(!prompt.trim()) return;
         try{
             setLoading(true);
             const response=await fetch("http://localhost:8080/api/v1/chat",{
@@ -22,10 +21,10 @@ function ChatInput({loading,setLoading}) {
                 })
             })
             
-            setPrompt("");
+            
             const result=await response.json()
             setReply(result.reply)
-            console.log(result)
+            setNewChat(false);
             setLoading(false);
             
 
@@ -38,10 +37,10 @@ function ChatInput({loading,setLoading}) {
     }
   return (
     <div className='InputContainer'>
-        <input type='text' className='textArea' placeholder='Ask anything' value={prompt} onChange={(e)=>setPrompt(e.target.value)}>
+        <input type='text' className='textArea' placeholder='Ask anything' value={prompt} onChange={(e)=>setPrompt(e.target.value)} onKeyDown={(e)=>e.key === "Enter" && getReply()}>
             
         </input>
-        <div className='sendButton' onClick={getReply} onKeyDown={(e)=>e.key==="Enter"?getReply:""}>
+        <div className='sendButton' onClick={getReply}>
             <IoSend />
         </div>
         
